@@ -1,0 +1,55 @@
+@import "../../assets/colors";
+
+.gallery {
+  width: 100%;
+
+  .photos {
+    line-height: 0;
+    column-count: 3;
+    column-gap: 10px;
+
+    .img {
+      margin: 10px;
+      padding: 20px;
+      border: 10px solid black;
+      cursor: pointer;
+      width: 100% !important;
+      height: auto !important;
+      filter: brightness(70%) contrast(150%) sepia(100%) saturate(0%)
+        brightness(150%);
+
+      &:hover {
+        filter: none;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    .photos {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .photos {
+      column-count: 1;
+    }
+  }
+
+  span {
+    color: $color;
+  }
+
+  button {
+    padding: 10px;
+    width: 40%;
+    color: $color;
+    font-size: 18px;
+    border: none;
+    background-color: rgba(51, 51, 51, 0);
+    cursor: pointer;
+    &:hover {
+      color: $hover;
+    }
+  }
+}
