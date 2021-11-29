@@ -9,14 +9,15 @@ export default function Categories() {
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
   const [showMenu, setShowMenu] = useState(false);
+  const windowWidth = window.innerWidth > 800;
 
   useEffect(() => {
-    window.innerWidth > 800 && setShowMenu(true);
+    setShowMenu(windowWidth);
     dispatch(getCategories());
   }, []);
 
   const handleShowMenu = () => {
-    setShowMenu(!showMenu);
+    !windowWidth && setShowMenu(!showMenu);
   };
 
   return (
@@ -27,14 +28,14 @@ export default function Categories() {
       {showMenu && (
         <div className="categories">
           {categories.map((el) => (
-              <Link
-                className="link"
-                onClick={handleShowMenu}
-                key={el.id}
-                to={`categories/${el.id}`}
-              >
-                {el.name.toUpperCase()}
-              </Link>
+            <Link
+              className="link"
+              onClick={handleShowMenu}
+              key={el.id}
+              to={`categories/${el.id}`}
+            >
+              {el.name.toUpperCase()}
+            </Link>
           ))}
         </div>
       )}
